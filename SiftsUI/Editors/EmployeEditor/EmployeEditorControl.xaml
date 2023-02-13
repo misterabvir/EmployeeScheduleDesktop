@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="ShiftsUI.Editors.EmployeEditor.EmployeEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShiftsUI.Editors.EmployeEditor" 
+             xmlns:shiftRepos="clr-namespace:ShiftsDomain.Repository;assembly=ShiftsDomain" 
+             xmlns:shiftModel="clr-namespace:ShiftsDomain.Model;assembly=ShiftsDomain" 
+             xmlns:scm1="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             mc:Ignorable="d">
+
+
+
+    <StackPanel>
+        <TextBlock Text="{StaticResource LblListEmploye}" Style="{StaticResource txtBlTitles}"/>
+        <ListBox Width="auto" Name="lbEmploye" Height="205" SelectionChanged="lbEmploye_SelectionChanged" Style="{StaticResource lbStyle}"  FontFamily="Segoe UI Light">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Path=Description}" Grid.Row="0" FontSize="10"/>
+                        <TextBlock Text="{Binding Path=Name}" Grid.Row="1" FontSize="14" FontFamily="Segoe UI Bold">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=Engineer}" Value="true" >
+                                            <Setter  Property="Foreground" Value="{StaticResource BrushF99}"/>
+                                        </DataTrigger>
+                                        
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock Text="{StaticResource LblNameEmploye}" Style="{StaticResource txtBlTitles}"/>
+        <TextBox Text="{Binding ElementName=lbEmploye, Path=SelectedItem.Name}"/>
+        <TextBlock Text="{StaticResource LblPerIDEmploye}" Style="{StaticResource txtBlTitles}"/>
+        <TextBox Text="{Binding ElementName=lbEmploye, Path=SelectedItem.PerId}"/>
+        <TextBlock Text="{StaticResource LblDescEmploye}" Style="{StaticResource txtBlTitles}"/>
+        <TextBox Text="{Binding ElementName=lbEmploye, Path=SelectedItem.Description}"/>
+        <TextBlock Text="{StaticResource LblEnginEmploye}" Style="{StaticResource txtBlTitles}"/>
+        <CheckBox IsChecked="{Binding ElementName=lbEmploye, Path=SelectedItem.Engineer}"/>
+        <!--<TextBlock Text="{StaticResource LblSortEmploye}" Style="{StaticResource txtBlTitles}"/>
+        <TextBox Text="{Binding ElementName=lbEmploye, Path=SelectedItem.OrderAnchor}"/>-->
+        <TextBlock Text="{StaticResource LblShiftEmploye}" Style="{StaticResource txtBlTitles}"/>
+        <ComboBox Name="cmbShift" Style="{StaticResource ComboBoxStyle}" SelectedItem="{Binding ElementName=lbEmploye, Path=SelectedItem.DefaultShift}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Path=Description}" Grid.Row="0" FontSize="10"/>
+                        <TextBlock Text="{Binding Path=Name}" Grid.Row="1" FontWeight="bold" FontSize="14"/>
+                    </Grid>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="{StaticResource BtnAdd}"  Click="BtnAddRule_Click"     Style="{StaticResource menuBtn}"/>
+            <Button Content="{StaticResource BtnDel}"  Click="BtnRemoveRule_Click"  Style="{StaticResource menuBtn}"/>
+            <Button Content="{StaticResource BtnSave}" Click="BtnSaveRuleClick"     Style="{StaticResource menuBtn}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

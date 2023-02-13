@@ -1,0 +1,24 @@
+﻿<Application x:Class="ShiftsUI.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ShiftsUI"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="styleresources\colordictionary.xaml"/>
+                <ResourceDictionary Source="styleresources\buttonstyle.xaml" />
+                <ResourceDictionary Source="styleresources\listboxstyle.xaml" />
+                <ResourceDictionary Source="styleresources\windowstyle.xaml"/>
+                <ResourceDictionary Source="styleresources\textblockstyle.xaml"/>
+                <ResourceDictionary Source="styleresources\textboxstyle.xaml"/>
+                <ResourceDictionary Source="styleresources\scrollstyle.xaml"/>
+                <ResourceDictionary Source="styleresources\checkboxstyle.xaml"/>
+                <ResourceDictionary Source="styleresources\comboboxstyle.xaml"/>
+                <ResourceDictionary Source="styleresources\cellTablestyle.xaml"/>
+                <ResourceDictionary Source="styleresources\TitlesDictionary.xaml"/>
+                <ResourceDictionary Source="styleresources\RadioStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ShiftsUI.Editors.RuleEditor.RuleEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShiftsUI.Editors.RuleEditor"
+             mc:Ignorable="d">
+
+    <StackPanel>
+        <TextBlock Text="{StaticResource LblListRule}" Style="{StaticResource txtBlTitles}"/>
+        <ListBox Name="lbRules" Height="110" Style="{StaticResource lbStyle}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=Litera}" Grid.Column="0" FontSize="14" FontWeight="bold"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+
+        <TextBlock Text="{StaticResource LblSignRule}" Style="{StaticResource txtBlTitles}"/>
+            <TextBox Text="{Binding ElementName=lbRules, Path=SelectedItem.Litera}"/>
+        <TextBlock Text="{StaticResource LblValueRule}" Style="{StaticResource txtBlTitles}" />
+        <TextBox Text="{Binding ElementName=lbRules, Path=SelectedItem.DefaultValue}"/>
+            <StackPanel Orientation="Horizontal">
+            <Button Content="{StaticResource BtnAdd}"  Click="BtnAddRule_Click" Style="{StaticResource menuBtn}"/>
+            <Button Content="{StaticResource BtnDel}" Click="BtnRemoveRule_Click"  Style="{StaticResource menuBtn}"/>
+            <Button Content="{StaticResource BtnSave}"  Click="BtnSaveRuleClick"  Style="{StaticResource menuBtn}"/>
+
+        </StackPanel>
+    </StackPanel>
+</UserControl>

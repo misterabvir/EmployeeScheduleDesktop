@@ -1,0 +1,24 @@
+﻿<Window     x:Class="ShiftsUI.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:tableviewer="clr-namespace:ShiftsUI.Editors.TableViewer"
+            mc:Ignorable="d"
+        Title="Табель выходов" Height="886" Width="auto" MinHeight="300" MinWidth="600" WindowState="Maximized" Background="#222" d:DesignWidth="1509.7" Icon="/worker-512.png">
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" VerticalAlignment="Top">
+
+            <Button Content="{StaticResource titleOpen}"        Style="{StaticResource  menuBtn}" Click="ButtonOpen_Click" />
+            <Button Content="{StaticResource titleCreate}"      Style="{StaticResource  menuBtn}" Click="ButtonCreate_Click" />
+            <Button Content="{StaticResource titleEmployes}"    Style="{StaticResource  menuBtn}" Click="ButtonEmploye_Click"/>
+            <Button Content="{StaticResource titleShifts}"      Style="{StaticResource  menuBtn}" Click="ButtonShift_Click"/>
+            <Button Content="{StaticResource titleRules}"       Style="{StaticResource  menuBtn}" Click="ButtonRule_Click"/>
+            <Button Content="{StaticResource titleExport}"      Style="{StaticResource  menuBtn}" Click="ButtonConvert_Click"/>
+            <Button Content="{StaticResource titleSave}"        Style="{StaticResource  menuBtn}" Click="ButtonSave_Click"/>
+        </StackPanel>
+        <tableviewer:TableViewerControl x:Name="table"  Margin="5">
+
+        </tableviewer:TableViewerControl>
+    </DockPanel>
+</Window>

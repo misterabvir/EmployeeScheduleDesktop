@@ -1,0 +1,206 @@
+﻿<UserControl x:Class="ShiftsUI.Editors.TableViewer.TableViewerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShiftsUI.Editors.TableViewer"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800" Name="control" MouseRightButtonDown="control_MouseRightButtonDown">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible" HorizontalContentAlignment="Center">
+        <StackPanel Height="auto" HorizontalAlignment="Center">
+
+            <ItemsControl x:Name="itemsDates" Margin="132,0,0,0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Date, StringFormat={}{0:dd}}" Style="{StaticResource dateTableHeader}">
+                            <TextBlock.ToolTip>
+                                <ToolTip BorderThickness="0" Background="#cc000000">
+                                    <TextBlock Text="{Binding Path=Date, ConverterCulture=ru-RU, StringFormat={}{0:dddd MM.dd.yyy}}" Style="{StaticResource cellTableToolTip}"/>
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+            <ItemsControl x:Name="items"  >
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" MouseEnter="ItemEmpoye_MouseEnter" MouseDown="SelectDay_MouseDown" Tag="{Binding}">
+                            <Label>
+                                <Label.Template>
+
+                                    <ControlTemplate>
+                                        <Grid Background="#333" Margin="1">
+                                            <Grid.ToolTip>
+                                                <ToolTip BorderThickness="0" Background="#cc000000">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="80"/>
+                                                            <ColumnDefinition Width="80"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Text="Должность:" Style="{StaticResource cellTableToolTip}" Grid.Column="0" Grid.Row="0"/>
+                                                        <TextBlock Text="{Binding Path=Description}" Style="{StaticResource cellTableToolTip}" Grid.Column="1" Grid.Row="0" TextWrapping="Wrap"/>
+                                                        <TextBlock Text="График:" Style="{StaticResource cellTableToolTip}" Grid.Column="0" Grid.Row="1"/>
+                                                        <TextBlock Text="{Binding Path=DefaultShift.Name}" Style="{StaticResource cellTableToolTip}" Grid.Column="1" Grid.Row="1"/>
+                                                        <TextBlock Text="Таб.№:" Style="{StaticResource cellTableToolTip}" Grid.Column="0" Grid.Row="2"/>
+                                                        <TextBlock Text="{Binding Path=PerId}" Style="{StaticResource cellTableToolTip}" Grid.Column="1" Grid.Row="2"/>
+                                                    </Grid>
+
+
+                                                </ToolTip>
+                                            </Grid.ToolTip>
+                                            <Grid.ColumnDefinitions>
+                                                <!--<ColumnDefinition Width="60"/>-->
+                                                <ColumnDefinition Width="130"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="{Binding Path=Name}" Grid.Column="0" Grid.Row="0" Style="{StaticResource cellTableNameBack}"/>
+                                            <!--<TextBlock Text="{Binding Path=PerId}" Grid.Column="0" Grid.Row="1" Style="{StaticResource cellTableIdBack}"/>-->
+                                        </Grid>
+                                    </ControlTemplate>
+
+                                </Label.Template>
+                            </Label>
+                            <ItemsControl ItemsSource="{Binding Path=Workdays}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding Path=Litera}"  Style="{StaticResource cellTableWorkDay}" MouseDown="SelectDay_MouseDown" Tag="{Binding}"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" Margin="0"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                            <TextBlock Text="{Binding Path=TotalOfDayOnWork}" Style="{StaticResource cellTableTotal}">
+                                <TextBlock.ToolTip>
+                                    <ToolTip BorderThickness="0" Background="#cc000000">
+                                        <TextBlock Text="Отработанные дни" Style="{StaticResource cellTableToolTip}"/>
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                            <TextBlock Text="{Binding Path=TotalOfHourOnWork}" Style="{StaticResource cellTableTotal}">
+                                <TextBlock.ToolTip>
+                                    <ToolTip BorderThickness="0" Background="#cc000000">
+                                        <TextBlock Text="Отработанные часы" Style="{StaticResource cellTableToolTip}"/>
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <StackPanel Orientation="Horizontal">
+                <Grid Name="gridSelect" Background="#333"  Width="300"  Visibility="{Binding Path=IsSingle, Converter={StaticResource VisibleIfTrueConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0"  Style="{StaticResource txtBlTitles}">
+                        <Run Text="Дата:"/>
+                        <Run Text="{Binding Path=SelectedWorkday1.Date, StringFormat={}{0:dd.MM.yyy}}"/>
+                    </TextBlock>
+                    <TextBlock     Grid.Row="1"    Style="{StaticResource txtBlTitles}">
+                        <Run Text="Результат:"/>
+                        <Run Text="Литера: "/>
+                        <Run Text="{Binding Path=SelectedWorkday1.Litera}"/>
+                        <Run Text="   Результат: "/>
+                        <Run Text="{Binding Path=SelectedWorkday1.Value,  Mode=OneWay}"/>
+                    </TextBlock>
+                    <TextBlock    Grid.Row="2"    Text="Обозначение:"  Style="{StaticResource txtBlTitles}"/>
+                    <TextBox      Grid.Row="3"    Text="{Binding Path=SelectedWorkday1.Litera, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock    Grid.Row="4"    Text="Не стандартное значение:" Style="{StaticResource txtBlTitles}"/>
+                    <TextBox      Grid.Row="5"    Text="{Binding Path=SelectedWorkday1.NonDefaultValue, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock    Grid.Row="6"    Text="Смена" Style="{StaticResource txtBlTitles}"/>
+                    <ComboBox Grid.Row="7"  Name="cmbShift" Style="{StaticResource ComboBoxStyle}" SelectedItem="{Binding Path=SelectedWorkday1.Shift}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Path=Description}" Grid.Row="0" FontSize="10"/>
+                                    <TextBlock Text="{Binding Path=Name}" Grid.Row="1" FontWeight="bold" FontSize="14"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <!--<Button Content="Сохранить"  Grid.Row="8" Click="ButtonSave_Click" Style="{StaticResource menuBtn}"/>-->
+                </Grid>
+
+                <Grid Name="gridSelectRange" Background="#333"  Width="500"  Visibility="{Binding Path=IsRange, Converter={StaticResource VisibleIfTrueConverter}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="12"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0"  Style="{StaticResource txtBlTitles}">
+                        <Run Text="Дата:"/>
+                        <Run Text="{Binding Path=SelectedWorkday1.Date, StringFormat={}{0:dd.MM.yyy}}"/>
+                        <Run Text=" - "/>
+                        <Run Text="{Binding Path=SelectedWorkday2.Date, StringFormat={}{0:dd.MM.yyy}}"/>
+                    </TextBlock>
+                    <TextBlock Grid.Row="2" Text="Обозначение"   Style="{StaticResource txtBlTitles}" VerticalAlignment="Bottom" />
+                    <TextBox      Grid.Row="3" Grid.Column="0"   Height="38" Name="txtLitera" />
+                    <Button    Grid.Row="3" Grid.Column="1"     Content="Применить:" Style="{StaticResource menuBtn}" Click="ButtonSetNewLitera_Click"/>
+                    <TextBlock Grid.Row="4" Text="График"   Style="{StaticResource txtBlTitles}" VerticalAlignment="Bottom"/>
+                    <ComboBox Grid.Row="5"  Grid.Column="0"  Name="cmbShiftRange" Style="{StaticResource ComboBoxStyle}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Path=Description}" Grid.Row="0" FontSize="10"/>
+                                    <TextBlock Text="{Binding Path=Name}" Grid.Row="1" FontWeight="bold" FontSize="14"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Button    Grid.Row="5"   Grid.Column="1"   Content="Применить:" Style="{StaticResource menuBtn}"  Click="ButtonSetNewShift_Click"/>
+                    <!--<Button Content="Сохранить"  Grid.Row="6" Click="ButtonSave_Click" Style="{StaticResource menuBtn}" />-->
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

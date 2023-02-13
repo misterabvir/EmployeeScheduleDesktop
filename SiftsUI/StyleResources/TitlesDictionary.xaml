@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:system="clr-namespace:System;assembly=netstandard">
+
+    <system:String x:Key="BtnSave">СОХРАНИТЬ</system:String>
+    <system:String x:Key="BtnDel">УДАЛИТЬ</system:String>
+    <system:String x:Key="BtnAdd">ДОБАВИТЬ</system:String>
+    <system:String x:Key="BtnNew">СОЗДАТЬ</system:String>
+    <system:String x:Key="BtnClose">ЗАКРЫТЬ</system:String>
+    <system:String x:Key="BtnExport">ЭКСПОРТ</system:String>
+
+    <system:String x:Key="LblListEmploye">СПИСОК СОТРУДНИКОВ:</system:String>
+    <system:String x:Key="LblNameEmploye">ФИО:</system:String>
+    <system:String x:Key="LblPerIDEmploye">ТАБЕЛЬНЫЙ НОМЕР:</system:String>
+    <system:String x:Key="LblDescEmploye">ДОЛЖНОСТЬ:</system:String>
+    <system:String x:Key="LblEnginEmploye">ИНЖЕНЕР:</system:String>
+    <system:String x:Key="LblSortEmploye">ЯКОРЬ СОРТИРОВКИ:</system:String>
+    <system:String x:Key="LblShiftEmploye">ОСНОВНОЙ ГРАФИК РАБОТЫ:</system:String>
+
+    <system:String x:Key="LblListShift">СПИСОК СМЕН:</system:String>
+    <system:String x:Key="LblNameShift">НАИМЕНОВАНИЕ СМЕНЫ:</system:String>
+    <system:String x:Key="LblDescShift">ОПИСАНИЕ СМЕНЫ:</system:String>
+    <system:String x:Key="LblWeekShift">НЕДЕЛЬНЫЙ ГРАФИК:</system:String>
+    <system:String x:Key="LblOfsetShift">СДВИГ (для цикличного графика):</system:String>
+    <system:String x:Key="LblShemeShift">СХЕМА:</system:String>
+
+    <system:String x:Key="LblListRule">ПРАВИЛА:</system:String>
+    <system:String x:Key="LblSignRule">ОБОЗНАЧЕНИЕ:</system:String>
+    <system:String x:Key="LblValueRule">ЧАСЫ:</system:String>
+    
+    <system:String x:Key="LblMonth">МЕСЯЦ:</system:String>
+
+    <system:String x:Key="titleEmployes">сотрудники</system:String>
+    <system:String x:Key="titleCreate">создать</system:String>
+    <system:String x:Key="titleSave">сохранить</system:String>
+    <system:String x:Key="titleOpen">открыть</system:String>
+    <system:String x:Key="titleShifts">смены</system:String>
+    <system:String x:Key="titleRules">правила</system:String>
+    <system:String x:Key="titleExport">экспорт</system:String>
+</ResourceDictionary>

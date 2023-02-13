@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>v4.5</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <StartupObject>ShiftsUI.App</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExcelExporter\ExcelExporter.csproj" />
+    <ProjectReference Include="..\ShiftsDomain\ShiftsDomain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Editors\TableViewer\Elements\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GemBox.Spreadsheet" Version="49.0.1039" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="StyleResources\RadioStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+</Project>

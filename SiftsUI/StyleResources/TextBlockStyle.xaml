@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="TextBlock" x:Key="txtBlTitles">
+        <Setter Property="Foreground" Value="{StaticResource BrushEEE}"/>
+        <Setter Property="Background" Value="{StaticResource Brush333}"/>
+        <Setter Property="FontFamily" Value="Segoe UI Light"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="5,5,5,0"/>
+    </Style>
+    <Style TargetType="Label" x:Key="HeaderTable">
+        <Setter Property="Foreground" Value="{StaticResource BrushEEE}"/>
+        <Setter Property="Background" Value="{StaticResource Brush333}"/>
+        <Setter Property="FontFamily" Value="Segoe UI Light"/>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="MinWidth" Value="35"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+</ResourceDictionary>

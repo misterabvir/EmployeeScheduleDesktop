@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ShiftsUI.Editors.ShiftEditor.ShiftEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShiftsUI.Editors.ShiftEditor"
+             mc:Ignorable="d" Height="auto" Width="auto" Background="#333" Foreground="#ccc" FontSize="14">
+   
+    <StackPanel>
+        <TextBlock Text="{StaticResource LblNameShift}" Style="{StaticResource txtBlTitles}"/>
+        <ListBox Width="auto" Height="150" Name="lbShift" DisplayMemberPath="Name" Style="{StaticResource lbStyle}"/>
+        <TextBlock Text="{StaticResource LblNameShift}" Style="{StaticResource txtBlTitles}"/>
+        <TextBox Text="{Binding ElementName=lbShift, Path=SelectedItem.Name}"/>
+        <TextBlock Text="{StaticResource LblDescShift}" Style="{StaticResource txtBlTitles}"/>
+        <TextBox Text="{Binding ElementName=lbShift, Path=SelectedItem.Description}"/>
+        <TextBlock Text="{StaticResource LblWeekShift}" Style="{StaticResource txtBlTitles}"/>
+        <CheckBox IsChecked="{Binding ElementName=lbShift, Path=SelectedItem.WeekModifier}"/>
+        <!--<TextBlock Text="{StaticResource LblOfsetShift}" Style="{StaticResource txtBlTitles}"/>
+        <TextBox Text="{Binding ElementName=lbShift, Path=SelectedItem.Offset}"/>-->
+        <TextBlock Text="{StaticResource LblShemeShift}" Style="{StaticResource txtBlTitles}"/>
+        <TextBox Text="{Binding ElementName=lbShift, Path=SelectedItem.Scheme}"/>
+                
+        <StackPanel Orientation="Horizontal">
+            <Button Content="{StaticResource BtnAdd}" Click="BtnAdd_Click"  Style="{StaticResource menuBtn}"/>
+            <Button Content="{StaticResource BtnDel}" Click="BtnRemove_Click"  Style="{StaticResource menuBtn}"/>
+            <Button Content="{StaticResource BtnSave}" Click="BtnSaveClick"  Style="{StaticResource menuBtn}"/>
+        </StackPanel>
+          
+    </StackPanel>
+   
+</UserControl>

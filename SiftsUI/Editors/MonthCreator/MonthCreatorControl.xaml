@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ShiftsUI.Editors.MonthCreator.MonthCreatorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShiftsUI.Editors.MonthCreator" xmlns:datemontheditor="clr-namespace:ShiftsUI.Editors.DateMonthEditor"
+             mc:Ignorable="d">
+
+
+    <StackPanel>
+        <TextBlock Text="{StaticResource LblListEmploye}" Margin="5,5,5,0"  Style="{StaticResource txtBlTitles}"/>
+        <ListBox Name="lbEmployes" Width="auto" Height="400" Margin="5,0,5,5" Style="{StaticResource lbStyle}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox IsChecked="{Binding Path=Show}" Grid.RowSpan="3" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=Description}" Grid.Column="1" Grid.Row="1" FontSize="8"/>
+                        <TextBlock Text="{Binding Path=Name}" Grid.Column="1" Grid.Row="0" FontSize="14" FontWeight="bold">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=Engineer}" Value="true" >
+                                            <Setter  Property="Foreground" Value="#f99"/>
+                                        </DataTrigger>
+
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Path=PerId}" Grid.Column="1" Grid.Row="2" FontSize="10"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <TextBlock Text="{StaticResource LblMonth}" Margin="5,5,5,0" Style="{StaticResource txtBlTitles}"/>
+        <datemontheditor:DateMonthEditorControl MinWidth="100" Margin="5" x:Name="mcDate"/>
+    </StackPanel>
+
+</UserControl>

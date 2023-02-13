@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="ShiftsUI.Editors.DateMonthEditor.DateMonthEditorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ShiftsUI.Editors.DateMonthEditor"
+             mc:Ignorable="d" 
+             Height="auto" Width="auto">
+    <StackPanel Orientation="Vertical">
+        <ComboBox Name="cmbListDate" Style="{StaticResource ComboBoxStyle}"/>
+    </StackPanel>
+</UserControl>
