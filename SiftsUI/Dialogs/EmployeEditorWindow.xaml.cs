@@ -19,15 +19,8 @@ namespace ShiftsUI.Dialogs
     /// </summary>
     public partial class EmployeEditorWindow : Window
     {
-        public EmployeEditorWindow()
-        {
-            InitializeComponent();
-        }
-
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
+        public EmployeEditorWindow() => InitializeComponent();
+        
+        private void ButtonClose_Click(object sender, RoutedEventArgs e) => Close();
     }
 }

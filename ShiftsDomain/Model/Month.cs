@@ -118,7 +118,7 @@ namespace ShiftsDomain.Model
         public void CreateMonth(IEnumerable<Employe> employes)
         {
             Employes = new ObservableCollection<Employe>();
-            foreach (var employe in employes)
+            foreach (var employe in employes.Where(item=>item.Show).OrderBy(item=>item.Id))
             {
                 Add(employe);
             }
